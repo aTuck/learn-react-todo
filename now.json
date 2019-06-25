@@ -1,9 +1,7 @@
 {
   "version":2,
   "name":"learn-react-todo",
-  "builds":[{"src":"package.json",
-  "use":"@now/static-build",
-  "config":{"distDir":"build"}}],
+  "builds":[{"src":"package.json","use":"@now/static-build","config":{"distDir":"build"}}],
   "routes":[
     {
       "src":"/static/(.*)",

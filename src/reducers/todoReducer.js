@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  let newTodos
+  let newTodos = []
   switch (action.type){
     case FETCH_TODOS:
       return {
@@ -26,15 +26,16 @@ export default function(state = initialState, action) {
       };
     case DEL_TODO:
       newTodos = [...state.todos.filter(todo => todo.id !== action.payload)];
+      
       return {
         ...state,
         todos: newTodos
       }
     case ADD_TODO:
-      newTodos = [...state.todos]
+      newTodos = [...state.todos];
       newTodos.push({
-        userId: newTodos[newTodos.length - 1].userId + 1,
-        id: newTodos[newTodos.length - 1].id + 1,
+        userId: (newTodos.length ? newTodos[newTodos.length - 1].userId + 1 : 0),
+        id: (newTodos.length ? newTodos[newTodos.length - 1].id + 1 : 0),
         title: action.payload,
         completed: false,
       })
